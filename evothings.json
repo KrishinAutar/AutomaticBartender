@@ -1,0 +1,14 @@
+{
+  "uuid": "14aeaa90-dc71-48fb-8906-d8d60df14165",
+  "plugins": [],
+  "libraries": [],
+  "name": "automaticbartender",
+  "title": "Automatic Bartender",
+  "description": "Making automatic drinks for you!",
+  "long-description": "App long description.",
+  "version": "",
+  "author-name": "Evothings",
+  "author-email": "build@evothings.com",
+  "author-url": "https://evothings.com",
+  "cordova-id": "com.evothings.samples.AutomaticBartender"
+}

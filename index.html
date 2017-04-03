@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no
+		initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+	<title>Automatic Bartender</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<style>
+		@import 'ui/css/evothings-app.css';
+	</style>
+
+    <style>
+        #resetButton    {
+            width: 49%;
+            float: left;
+        }
+        #disconnectButton   {
+            width: 49%;
+            float: right;
+        }
+
+    </style>
+
+	<script>
+	// Redirect console.log to Evothings Workbench.
+	if (window.hyper && window.hyper.log) { console.log = hyper.log }
+	window.onerror = function(msg, url, line)
+	{
+		console.log(msg + ": " + url + ":" + line);
+	};
+	</script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name = "format-detection" content = "telephone=no"/>
+        <!--
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;" />
+        -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+
+        <title>Light Control</title>
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="expires" content="-1" />
+
+    </head>
+    <body ontouchstart=""><!-- ontouchstart="" enables low-delay CSS transitions. -->
+
+	<header>
+		<button class="back" onclick="history.back()">
+			<img src="ui/images/arrow-left.svg" />
+		</button>
+
+		<img class="logotype" src="ui/images/logo2.svg" alt="Evothings" />
+        
+		<!--<button class="menu" onclick=""><img src="ui/images/menu.svg" /></button>-->
+	</header>
+	
+
+  	<div data-role="main" class="ui-content">
+  
+	<center><h1>Automatic Bartender</h1></center>
+	<div id="connectionScreen">
+            <ul id="deviceList" class="topcoat-list">      
+            </ul>
+            <div style="margin: 10px">            
+                <button class="topcoat-button" id="refreshButton">Refresh</button>
+            </div>            
+        </div>
+        
+        <div id="colorScreen">
+            
+            <button class="red wide" onclick="app.ledOn()">VODKA & SODA</button>
+
+			<button class="red wide" onclick="app.ledOff()">VODKA & COKE</button>
+
+            <button class="green wide" onclick="app.ledOn()">WHISKEY & SODA</button>
+
+            <button class="green wide" onclick="app.ledOff()">WHISKEY & COKE</button>
+
+            <button class="blue wide" onclick="app.ledOn()">BOURBON & SODA</button>
+
+            <button class="blue wide" onclick="app.ledOff()">BOURBON & COKE</button>
+            
+            <button id="resetButton" class="yellow" onclick="app.ledOff()">RESET</button>
+            
+            <button id="disconnectButton" class="yellow" onclick="app.disconnect()">EXIT</button>
+            
+        </div>
+        <div id="messageDiv" style="font-size:75%"></div>        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/underscore-min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+            app.ledOn = function(){
+            	bluetoothSerial.write("a");
+            }
+            app.ledOff = function(){
+            	bluetoothSerial.write("b");
+            }
+        </script>
+        </div>
+        
+
+    </body>
+</html>
